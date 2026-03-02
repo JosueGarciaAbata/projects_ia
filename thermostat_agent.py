@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-
 HEAT = "HEAT"
 COOL = "COOL"
 NOOP = "NOOP"
