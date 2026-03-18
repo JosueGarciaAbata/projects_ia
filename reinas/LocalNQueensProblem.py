@@ -4,6 +4,7 @@ import random
 State = list[int]
 Action = Tuple[int, int]  # (columna, nueva_fila)
 
+# Recordar: es columna -> fila, no al revés. Esto es para facilitar la generación de vecinos.
 
 class LocalNQueensProblem:
     def __init__(self, n: int):
@@ -24,7 +25,8 @@ class LocalNQueensProblem:
         new_state[col] = new_row
         return new_state
 
-    # Funcion de costo
+    # conflicts = qué tan malo es el estado
+    # Función costo que mide el número de conflictos en un estado dado.
     def conflicts(self, state: State) -> int:
         conflicts = 0
         for i in range(self.n):
@@ -33,7 +35,8 @@ class LocalNQueensProblem:
                     conflicts += 1
         return conflicts
 
-    # Fitness function
+    # value = qué tan bueno es el estado
+    # Es una función que evalúa qué tan buena es una configuración del tablero. Mientras mayor sea el valor, mejor es el estado.
     def value(self, state: State) -> int:
         return -self.conflicts(state)
 
